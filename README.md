@@ -1,6 +1,6 @@
 # Kilo 🧵🪄
 
-Kilo is a small, fast utility for manipulating strings and generating sourcemaps with Magic 🪄.
+Kilo is a small, fast utility crate/library for manipulating strings and generating sourcemaps with all in Magic 🪄
 
 ## Features
 
