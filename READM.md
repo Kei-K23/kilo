@@ -4,6 +4,11 @@ Kilo is a small, fast utility for manipulating strings and generating sourcemaps
 
 ## Features
 
+- [x] insert
+- [x] remove
+- [x] replace
+- [x] last_char
+- [x] to_string
 - [ ] addSourcemapLocation
 - [ ] append
 - [ ] appendLeft
@@ -15,15 +20,11 @@ Kilo is a small, fast utility for manipulating strings and generating sourcemaps
 - [ ] indent
 - [ ] move
 - [ ] overwrite
-- [ ] update
 - [ ] prepend
 - [ ] prependLeft
 - [ ] prependRight
-- [ ] remove
-- [ ] lastChar
 - [ ] lastLine
 - [ ] slice
-- [ ] toString
 - [ ] isEmpty
 - [ ] length
 - [ ] trimLines

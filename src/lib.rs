@@ -66,9 +66,19 @@ impl MagicString {
         self.modified.replace_range(start..end, "");
     }
 
+    /// Get the last char
+    pub fn last_char(&self) -> char {
+        self.modified.chars().last().unwrap()
+    }
+
     /// Get the modified string
     pub fn get_modified(&self) -> &str {
         &self.modified
+    }
+
+    /// Get the modified string value
+    pub fn to_string(&self) -> String {
+        self.modified.clone()
     }
 
     /// Get the original string
@@ -88,10 +98,13 @@ mod tests {
         ms.insert(7, "beautiful ");
         assert_eq!(ms.get_modified(), "Hello, beautiful world!");
 
-        ms.replace(0, 5, "Hola");
-        assert_eq!(ms.get_modified(), "Hola, beautiful world!");
+        ms.replace(0, 5, "Hi");
+        assert_eq!(ms.get_modified(), "Hi, beautiful world!");
 
-        ms.remove(0, 4);
-        assert_eq!(ms.get_modified(), ", beautiful world!");
+        ms.remove(19, 20); // Remove exclamation
+        assert_eq!(ms.get_modified(), "Hi, beautiful world");
+
+        assert_eq!(ms.last_char(), 'd');
+        assert_eq!(ms.to_string(), "Hi, beautiful world");
     }
 }
