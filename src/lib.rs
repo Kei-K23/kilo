@@ -20,5 +20,18 @@ struct Operation {
     string: Option<String>,
 }
 
+impl MagicString {
+    // Create new magic string instance
+    pub fn new(text: &str) -> Self {
+        Self {
+            original: text.to_string(),
+            modified: text.to_string(),
+            operations: vec![],
+        }
+    }
+
+    // Insert string to specific index
+}
+
 #[cfg(test)]
 mod tests {}
