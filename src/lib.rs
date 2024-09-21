@@ -62,7 +62,7 @@ impl MagicString {
             end,
             text: None,
         });
-        // Remove the string within specific index
+
         self.modified.replace_range(start..end, "");
     }
 
@@ -73,7 +73,7 @@ impl MagicString {
             end: 0,
             text: Some(text.to_string()),
         });
-        // Remove the string within specific index
+
         self.modified.insert_str(0, text);
         self
     }
@@ -109,6 +109,10 @@ impl MagicString {
     pub fn get_original(&self) -> &str {
         &self.original
     }
+
+    pub fn has_changed(&self) -> bool {
+        &self.original != &self.modified
+    }
 }
 
 #[cfg(test)]
@@ -118,6 +122,7 @@ mod tests {
     #[test]
     fn test_magic_string() {
         let mut ms = MagicString::new("Hello, world!");
+        assert_eq!(ms.has_changed(), false);
 
         ms.insert(7, "beautiful ");
         assert_eq!(ms.get_modified(), "Hello, beautiful world!");
@@ -132,5 +137,6 @@ mod tests {
         assert_eq!(ms.to_string(), "Hi, beautiful world");
         ms.prepend("Hi").append(" WORLD");
         assert_eq!(ms.get_modified(), "HiHi, beautiful world WORLD");
+        assert_eq!(ms.has_changed(), true);
     }
 }

@@ -11,15 +11,16 @@ Kilo is a small, fast utility crate/library for manipulating strings and generat
 - [x] to_string
 - [x] prepend
 - [x] append
-- [ ] addSourcemapLocation
+- [x] has_changed
+- [ ] prepend_left
+- [ ] prepend_right
+- [ ] append_left
+- [ ] append_right
 - [ ] clone
 - [ ] generateDecodedMap
 - [ ] generateMap
 - [ ] getIndentString
 - [ ] move
-- [ ] prepend
-- [ ] prependLeft
-- [ ] prependRight
 - [ ] lastLine
 - [ ] slice
 - [ ] isEmpty
@@ -30,6 +31,5 @@ Kilo is a small, fast utility crate/library for manipulating strings and generat
 - [ ] trimEnd
 - [ ] trimStartAborted
 - [ ] trimStart
-- [ ] hasChanged
 - [ ] replace
 - [ ] replaceAll
