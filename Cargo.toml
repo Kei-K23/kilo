@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Kei-K23 <arkar.dev.kei@gmail.com>"]
 description = "Kilo is a small, fast utility crate/library for manipulating strings and generating sourcemaps with all in Magic 🪄"
-keywords = ["strings", "string_manipulating", "template", "parser", 'sourcemaps']
+keywords = ["kilo", "strings", "string_manipulating", "template", "parser", 'sourcemaps', "magic_string"]
 license = "MIT"
 readme = "README.md"
-categories = ["parser", "strings", "sourcemaps", "builder"]
+categories = ["parsing", "text-processing", "parser-implementations", "accessibility"]
 homepage = "https://github.com/Kei-K23/kilo"
 repository = "https://github.com/Kei-K23/kilo"
 
