@@ -17,7 +17,7 @@ struct Operation {
     op_type: OperationType,
     start: usize,
     end: usize,
-    string: Option<String>,
+    text: Option<String>,
 }
 
 impl MagicString {
@@ -31,7 +31,27 @@ impl MagicString {
     }
 
     // Insert string to specific index
+    pub fn insert(&mut self, index: usize, text: &str) {
+        self.operations.push(Operation {
+            op_type: OperationType::INSERT,
+            start: index,
+            end: index,
+            text: Some(text.to_string()),
+        });
+        // Insert the string
+        self.modified.insert_str(index, text);
+    }
 }
 
 #[cfg(test)]
-mod tests {}
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_magic_string() {
+        let mut ms = MagicString::new("Hello, world!");
+
+        ms.insert(7, "beautiful ");
+        assert_eq!(ms.get_modified(), "Hello, beautiful world!");
+    }
+}
