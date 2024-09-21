@@ -9,17 +9,14 @@ Kilo is a small, fast utility for manipulating strings and generating sourcemaps
 - [x] replace
 - [x] last_char
 - [x] to_string
+- [x] prepend
+- [x] append
 - [ ] addSourcemapLocation
-- [ ] append
-- [ ] appendLeft
-- [ ] appendRight
 - [ ] clone
 - [ ] generateDecodedMap
 - [ ] generateMap
 - [ ] getIndentString
-- [ ] indent
 - [ ] move
-- [ ] overwrite
 - [ ] prepend
 - [ ] prependLeft
 - [ ] prependRight
