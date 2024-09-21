@@ -66,6 +66,30 @@ impl MagicString {
         self.modified.replace_range(start..end, "");
     }
 
+    pub fn prepend(&mut self, text: &str) -> &mut Self {
+        self.operations.push(Operation {
+            op_type: OperationType::INSERT,
+            start: 0,
+            end: 0,
+            text: Some(text.to_string()),
+        });
+        // Remove the string within specific index
+        self.modified.insert_str(0, text);
+        self
+    }
+
+    pub fn append(&mut self, text: &str) -> &mut Self {
+        let len = self.modified.len();
+        self.operations.push(Operation {
+            op_type: OperationType::INSERT, // Treat append as insert at the end
+            start: len,
+            end: len,
+            text: Some(text.to_string()),
+        });
+        self.modified.push_str(text); // Append text at the end of the modified string
+        self // Return mutable reference to `self` for chaining
+    }
+
     /// Get the last char
     pub fn last_char(&self) -> char {
         self.modified.chars().last().unwrap()
@@ -106,5 +130,7 @@ mod tests {
 
         assert_eq!(ms.last_char(), 'd');
         assert_eq!(ms.to_string(), "Hi, beautiful world");
+        ms.prepend("Hi").append(" WORLD");
+        assert_eq!(ms.get_modified(), "HiHi, beautiful world WORLD");
     }
 }
