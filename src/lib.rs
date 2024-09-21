@@ -21,7 +21,7 @@ struct Operation {
 }
 
 impl MagicString {
-    // Create new magic string instance
+    /// Create new magic string instance
     pub fn new(text: &str) -> Self {
         Self {
             original: text.to_string(),
@@ -30,7 +30,7 @@ impl MagicString {
         }
     }
 
-    // Insert string to specific index
+    /// Insert string to specific index
     pub fn insert(&mut self, index: usize, text: &str) {
         self.operations.push(Operation {
             op_type: OperationType::INSERT,
@@ -40,6 +40,40 @@ impl MagicString {
         });
         // Insert the string
         self.modified.insert_str(index, text);
+    }
+
+    /// Replace the string within specific index
+    pub fn replace(&mut self, start: usize, end: usize, text: &str) {
+        self.operations.push(Operation {
+            op_type: OperationType::REPLACE,
+            start,
+            end,
+            text: Some(text.to_string()),
+        });
+        // Update the string within specific index
+        self.modified.replace_range(start..end, text);
+    }
+
+    /// Remove the string within specific index
+    pub fn remove(&mut self, start: usize, end: usize) {
+        self.operations.push(Operation {
+            op_type: OperationType::REMOVE,
+            start,
+            end,
+            text: None,
+        });
+        // Remove the string within specific index
+        self.modified.replace_range(start..end, "");
+    }
+
+    /// Get the modified string
+    pub fn get_modified(&self) -> &str {
+        &self.modified
+    }
+
+    /// Get the original string
+    pub fn get_original(&self) -> &str {
+        &self.original
     }
 }
 
@@ -53,5 +87,11 @@ mod tests {
 
         ms.insert(7, "beautiful ");
         assert_eq!(ms.get_modified(), "Hello, beautiful world!");
+
+        ms.replace(0, 5, "Hola");
+        assert_eq!(ms.get_modified(), "Hola, beautiful world!");
+
+        ms.remove(0, 4);
+        assert_eq!(ms.get_modified(), ", beautiful world!");
     }
 }
